@@ -1,0 +1,56 @@
+.container{
+	display:grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 120px 350px 250px auto 50px;
+	grid-template-areas: 
+	  "hd"
+	  "as"
+	  "ca"
+	  "te"
+	  "ft";
+	grid-gap:10px;
+  }
+.container header{
+    grid-area:hd;
+  }
+.container footer{
+    grid-area:ft;
+  }
+.container aside{
+	grid-area:as;
+	overflow: hidden;
+  }
+.container .techno{
+    grid-area:te;
+  }
+.container .career{
+    grid-area:ca;
+  }
+
+
+.hero{    
+	max-height: 325px;
+    overflow: hidden;
+}
+
+.img-fluid{
+	width:100%;
+}
+
+figure{
+	margin:0;
+}
+
+button{    
+	background-color: darkorange;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+button:hover{
+	background-color: #DE3712;
+}

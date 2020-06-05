@@ -1,0 +1,33 @@
+.cards-list{
+	display:block;
+}
+
+.card{
+	padding-top: 25px;
+	width:100%;
+}
+
+@media (min-width: 768px) {
+	.cards-list{
+		display:flex;
+		justify-content:space-around;
+		flex-direction:row;
+	}
+
+	.card{
+		padding-top: 25px;
+		width:250px;
+	}
+}
+
+.card img {
+    width: 100%;
+	max-width:225px;
+}
+
+.card h3 {
+    color: #666756;
+    font-size: 25px;
+    font-weight: bold;
+}
+

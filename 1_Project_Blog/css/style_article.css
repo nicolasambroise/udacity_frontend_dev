@@ -1,0 +1,46 @@
+.container{
+	display:grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 120px auto 300px 50px;
+	grid-template-areas: 
+	  "hd"
+	  "ar"
+	  "au"
+	  "ft";
+	grid-gap:10px;
+  }
+.container header{
+    grid-area:hd;
+  }
+.container footer{
+    grid-area:ft;
+  }
+.container #article{
+	grid-area:ar;
+  }
+  
+.container #author{
+	grid-area:au;
+  }
+
+.breadcrumb{
+	color:lightgray;
+}
+  
+#author{
+	padding: 15px 30px;
+}  
+
+#author .information{
+	display:flex;
+	justify-content:space-around;
+	flex-direction:row;
+}
+
+#author .information img{
+	border-radius: 50%;
+    background-color: #e7bd9b;
+    box-shadow: 1px 1px 3px #333;
+	width: 80px;
+	margin: 10px 20px;
+}
