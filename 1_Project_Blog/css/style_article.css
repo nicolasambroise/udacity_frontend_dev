@@ -1,5 +1,8 @@
+@import "global.css";
+@import "header.css";
+
 .container{
-	display:grid;
+	display:block;
 	grid-template-columns: 100%;
 	grid-template-rows: 120px auto 300px 50px;
 	grid-template-areas: 

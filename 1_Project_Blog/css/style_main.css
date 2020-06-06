@@ -1,7 +1,11 @@
+@import "global.css";
+@import "header.css";
+@import "card.css";
+
 .container{
-	display:grid;
+	display:block;
 	grid-template-columns: 100%;
-	grid-template-rows: 120px 350px 250px auto 50px;
+	grid-template-rows: 120px 400px 250px auto 50px;
 	grid-template-areas: 
 	  "hd"
 	  "as"
@@ -27,7 +31,33 @@
     grid-area:ca;
   }
 
+.navbar{ 
+	height: 50px;
+	background-color: #ddd;
+}
 
+.navbar ul{
+	display: flex;
+    list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar ul li{
+	margin: 10px 0 0 10px;
+}
+
+.navbar ul li a{
+	text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+	.navbar ul li{
+		margin: 10px 0 0 20px;
+	}
+}
+  
+  
 .hero{    
 	max-height: 325px;
     overflow: hidden;
