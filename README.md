@@ -23,6 +23,16 @@ Simply clic on index.html
 ## Project 2 : Landing page
 In this project, you will be building a multi-section landing page. Often times, you won’t know how much content will be added to a page through a Content Management System (CSM) or an API. To handle this problem, you will dynamically add content to a web page. You’ll be building a landing page that combines your skills with JavaScript, HTML, and CSS to update and control the page and create a dynamic user experience.
 
+#### Landing Page Behavior
+- Navigation is built dynamically as an unordered list.
+- It should be clear which section is being viewed while scrolling through the page.
+- When clicking an item from the navigation menu, the link should scroll to the appropriate section.
+
+#### Who to install it
+No installation, it's only html files.
+
+#### Who to use it
+Simply clic on index.html
 
 ## Project 3 : Weather Journal App
 Apply your new skills to combine data from the OpenWeatherMap API and client side (browser) HTML forms to create a web app that records a weather journal for users. This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI for a Weather Journal App.
@@ -33,3 +43,10 @@ Build a web tool that allows users to run Natural Language Processing (NLP) on a
 
 ## Project 5 : Capstone - Travel App
 In the final project, you’ll combine all of the skills you’ve developed throughout the Nanodegree program to build an online travel app. You’ll work with data sources from multiple APIs to create a dynamic travel weather planning application that helps people plan trips by generating weather forecasts for the places they’re visiting. The design is up to you, and you’ll have the flexibility to include and combine other APIs (even your own!) to build this final project.
+
+
+## Style-Guide
+
+See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
+
+* [Nanodegree Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
