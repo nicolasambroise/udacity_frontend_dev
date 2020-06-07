@@ -49,4 +49,7 @@ In the final project, you’ll combine all of the skills you’ve developed thro
 
 See below for the Udacity Style Guide used thoroughout the Front End Nanodegree.
 
-* [Nanodegree Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
+* [CSS Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/css.html)
+* [HTML Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/)
+* [JavaScript Style Guide](http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html)
+* [Git Style Guide](https://udacity.github.io/git-styleguide/)
