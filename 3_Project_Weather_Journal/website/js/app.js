@@ -5,7 +5,6 @@ const weatherAPI_url = "api.openweathermap.org/data/2.5/weather";
 /* Global Variables */
 const server_url = "http://localhost:9000/";
 const default_country = "FR"; // I contact OpenWeatherMap and Luxembourg(LU) is not in the country list, so I choose France(FR) as default
-const CelsiusKelvin = -273.15; // To convert Kelvin in Celsius
 
 /* Create a new date instance dynamically with JS */
 let d = new Date();
@@ -14,7 +13,7 @@ let newDate = new Date().toLocaleDateString('fr-FR');
 
 /* Function to GET Web API Data -  fetch via OpenWeatherMap */
 const getWeather = async (weatherAPI_url, zipcode , weatherAPI_key) => {
-	const url = `http://${weatherAPI_url}?zip=${zipcode}&appid=${weatherAPI_key}`;
+	const url = `http://${weatherAPI_url}?zip=${zipcode}&appid=${weatherAPI_key}&units=metric`;
 	//console.log("getWeather : "+url);
 	const response = await fetch(url);
 	let jsonResponse = await response.json();
@@ -40,14 +39,12 @@ const updateUI = async () => {
 	const request = await fetch(server_url+"all");
 	try{
 		const allData = await request.json();
-		console.log(allData);
-		let temp_celsius = (Number(allData[0].temperature) + CelsiusKelvin).toFixed(2);
-		//console.log(temp_celsius);	
-		document.getElementById('date').innerHTML =`<span class="entry-item">Date: </span>${allData[0].date}`;
-		document.getElementById('temp').innerHTML = `<span class="entry-item">You feel: </span>${allData[0].userResponse}`;
-		document.getElementById('content').innerHTML = `<span class="entry-item">Temperature: </span>${temp_celsius} C°`;
+		document.getElementById('date').innerHTML =`<span class="entry-item">Date: </span><span class="value">${allData.date}</span>`;
+		document.getElementById('temp').innerHTML = `<span class="entry-item">You feel: </span><span class="value">${allData.userResponse}</span>`;
+		document.getElementById('content').innerHTML = `<span class="entry-item">Temperature: </span><span class="value">${allData.temperature} C°</span>`;
 	} catch(error) {
 		console.log('error', error);
+		alert("Something wrong happened !");
 	};
 }
 
@@ -70,14 +67,16 @@ const handleClick = async (zipValue,feelingValue) => {
 }
 
 /* Event listener to add function to existing HTML DOM element - click on element with 'generate' id */
-document.getElementById("generate").addEventListener("click", function(event){
-	event.preventDefault();
-	const zipInput = document.getElementById('zip');
-	const feelingInput = document.getElementById('feelings');
-	if(zipInput.value != "" && feelingInput.value != ""){
-		handleClick(zipInput.value,feelingInput.value);
-		//Reset TextArea to avoid double clic
-		feelingInput.value = "";
-	}
-	else{alert("Please, complete the form !");}
+document.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("generate").addEventListener("click", function(event){
+		event.preventDefault();
+		const zipInput = document.getElementById('zip');
+		const feelingInput = document.getElementById('feelings');
+		if(zipInput.value != "" && feelingInput.value != ""){
+			handleClick(zipInput.value,feelingInput.value);
+			//Reset TextArea to avoid double clic
+			feelingInput.value = "";
+		}
+		else{alert("Please, complete the form !");}
+	});
 });
