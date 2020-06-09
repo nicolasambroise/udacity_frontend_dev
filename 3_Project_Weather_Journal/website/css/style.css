@@ -1,0 +1,64 @@
+@import "bootstrap.min.css";
+@import "header.css";
+@import "https://fonts.googleapis.com/css?family=Lato:100,300";
+
+html{
+	margin:0;
+	padding:0;
+}
+
+body{
+    background-color: #f9f7f1;
+	font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    color: #545454;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+	padding: 0;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.container {
+    font-family: 'Lato', sans-serif;
+    color: #666756;
+    font-weight: 300;
+}
+
+h2 {
+	font-size: 24px;
+    color: #DE3712;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+
+.borderbox{
+	display: block;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15), 1px 2px 3px rgba(0,0,0,.6);
+    padding: 15px 30px;
+	margin-bottom:10px;
+    background-color: #fff;
+}
+
+#entryHolder{
+	min-height: 100px;
+}
+
+small{
+	font-style: italic;
+}
+
+
+label{
+    font-size: 18px;
+}
+
+footer{
+	color: #545454;
+	font-size:small;
+	padding:5px
+}
