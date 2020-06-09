@@ -57,12 +57,6 @@ npm start
 #### Who to use this app
 Simply navigate to http://localhost:9000
 
-#### More information
-I contact OpenWeatherMap and Luxembourg(LU) is not in the country list, so I choose France(FR) as default Country
-You can change the default country in "app.js" or juste use the format "54000,FR" in the input field to select another country.
-I also convert Temperature in Celcius as I'm in Europe. You can by-pass it in "app.js" file.
-
-
 ## Project 4 : Evaluate A News Article with Natural Language Processing 
 Build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. Using an exciting new API called Aylien, you can build a simple web interface to interact with their NLP system. This tool will give back pertinent information about the article: whether the content is subjective (opinion) or objective (fact-based) and whether it is positive, neutral, or negative in tone.
 
