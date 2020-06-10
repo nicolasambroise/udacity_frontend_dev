@@ -5,6 +5,7 @@ const weatherAPI_url = "api.openweathermap.org/data/2.5/weather";
 /* Global Variables */
 const server_url = "http://localhost:9000/";
 const default_country = "FR"; // I contact OpenWeatherMap and Luxembourg(LU) is not in the country list, so I choose France(FR) as default
+const zipRegexPattern = new RegExp(/^[0-9]{4,5},[A-Z]{2}$/); // Pattern for Zipcode
 
 /* Create a new date instance dynamically with JS */
 let d = new Date();
@@ -16,8 +17,13 @@ const getWeather = async (weatherAPI_url, zipcode , weatherAPI_key) => {
 	const url = `http://${weatherAPI_url}?zip=${zipcode}&appid=${weatherAPI_key}&units=metric`;
 	//console.log("getWeather : "+url);
 	const response = await fetch(url);
-	let jsonResponse = await response.json();
-	return jsonResponse;
+	try {
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    }catch(error) {
+		console.log('error', error);
+		alert("Something wrong happened !");
+    }
 }
 
 /* Function to POST data */
@@ -49,21 +55,25 @@ const updateUI = async () => {
 }
 
 /* Function called by event listener */
-const handleClick = async (zipValue,feelingValue) => {
-	let zipcode = zipValue;
-	if(zipcode.indexOf(",") < 0){zipcode = zipcode+","+default_country;}
+const handleClick = async (zipcode,feelingValue) => {
 	//console.log("Zip : " + zipcode);
 	//console.log("Feel : " + feelingValue);
 	const weatherData = await getWeather(weatherAPI_url, zipcode, weatherAPI_key);
-	const data = {
-		temperature: weatherData.main.temp,
-		date: newDate,
-		userResponse: feelingValue
-	};
-	postData(server_url+"data", data)
-	.then(function(data){
-			updateUI();
-	});
+	console.log(weatherData);
+	if(weatherData.hasOwnProperty("cod") && weatherData.cod == "404") {
+		  alert(weatherData.message+" - zipcode:"+zipcode);
+	}
+	else{
+		const data = {
+			temperature: weatherData.main.temp,
+			date: newDate,
+			userResponse: feelingValue
+		};
+		postData(server_url+"data", data)
+			.then(function(data){
+				updateUI();
+			});
+	}
 }
 
 /* Event listener to add function to existing HTML DOM element - click on element with 'generate' id */
@@ -72,11 +82,19 @@ document.addEventListener("DOMContentLoaded", function() {
 		event.preventDefault();
 		const zipInput = document.getElementById('zip');
 		const feelingInput = document.getElementById('feelings');
+
 		if(zipInput.value != "" && feelingInput.value != ""){
-			handleClick(zipInput.value,feelingInput.value);
-			//Reset TextArea to avoid double clic
-			feelingInput.value = "";
+			let zipcode = zipInput.value;
+			if(zipcode.indexOf(",") < 0){zipcode = zipcode+","+default_country;}
+			const ziptest = zipRegexPattern.test(zipcode);
+			console.log(zipcode+" --> "+ziptest)
+			if(ziptest){
+				handleClick(zipcode,feelingInput.value);
+				feelingInput.value = ""; //Reset TextArea to avoid double clic
+			}
+			else{alert("There are an error in the zipcode format");}
 		}
 		else{alert("Please, complete the form !");}
 	});
 });
+

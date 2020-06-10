@@ -36,7 +36,13 @@ Simply navigate to http://localhost:9000
 #### More information
 I contact OpenWeatherMap and Luxembourg(LU) is not in the country list, so I choose France(FR) as default Country
 You can change the default country in "app.js" or juste use the format "54000,FR" in the input field to select another country.
-I also use Celcius when I call the API as I'm in Europe (param units=metric). You can change it in "app.js" file.
+I also convert Temperature in Celcius as I'm in Europe. You can by-pass it in "app.js" file.
+
+#### Run Test 
+Use the following command on your terminal
+```
+npm run test
+```
 
 ## Style-Guide
 
