@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="vieport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="News Articles NLP - Nicolas AMBROISE">
+		<meta name="author" content="Nicolas AMBROISE">
+		<title>News Articles NLP - Nicolas AMBROISE</title>
+		<base href="/">
+</head>
+<body>
+   <div class="container">
+		<header class="box">
+			<div id="avatar">
+				<picture>
+					<img alt="nicolas ambroise picture" data-entity-type="" data-entity-uuid="" src="../img/avatar/AmbroiseNicolas2020Square100.png">
+				 </picture>
+			</div>
+			<div class="head-text">
+				<h1 class="text-uppercase">Nicolas AMBROISE</h1>
+				<strong>Senior IT Officer / Frontend Web Developer</strong>
+			</div>
+		</header>
+		<main class="borderbox">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Article Analysis Website</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<p>
+						Build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. Using an exciting new API called <strong>Aylien</strong>, you can build a simple web interface to interact with their NLP system. This tool will give back pertinent information about the article: whether the content is subjective (opinion) or objective (fact-based) and whether it is positive, neutral, or negative in tone.<br><br>
+						<strong>Natural language processing (NLP)</strong> is a subfield of computer science, information engineering, and artificial intelligence concerned with the interactions between computers and human (natural) languages, in particular how to program computers to process and analyze large amounts of natural language data.
+					</p>				
+				</div>
+			</div><hr>
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					Use the 2 following button to test the link with the Server and the link with Aylien API.
+				</div>
+				<div class="col-md-5 offset-md-1">
+					<form onsubmit="return Client.handleSubmitTestServer(event)">
+						<div class="text-center">
+							<button class="btn btn-info" type="submit" id="btn-submit-test-server"><i class="fa fa-spinner fa-spin"></i>TEST Server</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-5">
+					<form onsubmit="return Client.handleSubmitTestApi(event)">
+						<div class="text-center">
+							<button class="btn btn-info" type="submit" id="btn-submit-test-api"><i class="fa fa-spinner fa-spin"></i>TEST Aylien Api</button>
+						</div>
+					</form>
+				</div>
+			</div><hr>
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<form onsubmit="return Client.handleSubmitName(event)">
+						<div class="form-group row">
+							<label for="my-name" class="col-md-3"><h3>Name</h3></label>
+							<div class="col-md-9">
+								<input id="my-name" class="form-control" type="text" name="input" value="" placeholder="Name">
+								<small id="urlHelp" class="form-text text-muted">Take care if you enter the name of one of my favorite capitain.</small>
+							</div>
+						</div>
+						<div class="text-center">
+							<button class="btn btn-info" type="submit" id="btn-submit-name"><i class="fa fa-spinner fa-spin"></i>Get Feedback</button>
+						</div>
+					</form>
+					<form onsubmit="return Client.handleSubmitURL(event)">
+						<div class="form-group row">
+							<label for="my-url" class="col-md-3"><h3>URL</h3></label>
+							<div class="col-md-9">
+								<input type="url" class="form-control" id="my-url" placeholder="Please enter your News feeds URL" required>
+								<small id="urlHelp" class="form-text text-muted">Type in an absolute URL of your news feeds to get the Aylien NLP feedback.</small>
+							</div>
+						</div>
+						<div class="text-center">
+							<button class="btn btn-info" type="submit" id="btn-submit-url"><i class="fa fa-spinner fa-spin"></i>Get Feedback</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row mt-3" id="result">
+				<hr>
+				<div class="col-md-12">
+					<h2>Result for : <span id="result-label"></span></h2>
+				</div>
+				<div class="col-md-6 mt-1">
+					<h3>Text Polarity:</h3>
+					<p id="polarity"></p>
+					<h4>Confidence:</h4>
+					<p id="polarity_confidence"></p>
+				</div>
+				<div class="col-md-6 mt-1">
+					<h3>Text Subjectivity:</h3>
+					<p id="subjectivity"></p>
+					<h4>Confidence:</h4>
+					<p id="subjectivity_confidence"></p>
+				</div>
+				<div class="col-md-12 mt-1">
+					<h3>Text Summary:</h3>
+					<p id="summary"></p>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+    <footer>
+      <p>&copy; Nicolas AMBROISE</p>
+    </footer>
+
+  </body>
+</html>
