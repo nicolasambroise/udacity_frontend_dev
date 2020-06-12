@@ -14,6 +14,8 @@ import { handleSubmitTestServer, handleSubmitTestApi } from './js/formHandlerTes
 import { handleSubmitName } from './js/formHandlerName'
 import { handleSubmitURL } from './js/formHandlerURL'
 
-console.log("CHANGE!!");
+if (process.env.NODE_ENV !== 'production') {
+  console.log('CHANGE !!! Looks like we are in development mode!');
+}
 
 export { checkForName, handleSubmitTestServer, handleSubmitTestApi, handleSubmitName, handleSubmitURL};
