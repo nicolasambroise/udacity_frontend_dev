@@ -15,7 +15,8 @@ module.exports = {
 		hot: true,
 		overlay: true,
 		headers: {"Access-Control-Allow-Origin": "*"},
-		historyApiFallback: true
+		historyApiFallback: true,
+		contentBase: './dist',
 	},
     stats: 'verbose',
 	output: {
