@@ -20,8 +20,8 @@ module.exports = {
 	},
     stats: 'verbose',
 	output: {
-		path: path.join(__dirname, "dist"),
-		filename: "bundle-[hash].min.js",
+		filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
 		libraryTarget: "var",
 		library: "Client"
 	},

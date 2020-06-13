@@ -47,7 +47,7 @@ Use the following command on your terminal
 npm run build-dev
 npm start
 ```
-This will open our browser automatically to "http://localhost:3000"
+This will open our browser automatically to "http://localhost:9000"
 
 #### Use the production server
 Use the following command on your terminal

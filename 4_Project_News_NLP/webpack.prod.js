@@ -14,8 +14,10 @@ module.exports = {
 		minimizer:[new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})]
 	},
 	output: {
-		path: path.join(__dirname, "dist"),
-		filename: "bundle-[hash].min.js",
+		//path: path.join(__dirname, "dist"),
+		//filename: "bundle-[hash].min.js",
+		filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
 		libraryTarget: "var",
 		library: "Client"
 	},
@@ -60,6 +62,9 @@ module.exports = {
 		  filename: "[name].css",
 		  chunkFilename: "[id].css"
 		}),
-		new WorkboxPlugin.GenerateSW()
+		new WorkboxPlugin.GenerateSW({
+			clientsClaim: true,
+			skipWaiting: true,
+		})
     ]
 }

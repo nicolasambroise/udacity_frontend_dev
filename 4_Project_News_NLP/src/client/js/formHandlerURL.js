@@ -1,5 +1,5 @@
 function handleSubmitURL(event) {
-	event.preventDefault();
+		event.preventDefault();
 	
 	// check what URL was put into the form field
 	const url = document.getElementById("my-url").value;
@@ -8,9 +8,14 @@ function handleSubmitURL(event) {
 		alert("You should put an URL in the input field !");
 		return;
 	}
+	
+	if(!Client.checkForURL(url)){
+		alert("Please enter a valid URL !");
+		return;
+	}
+	
 	document.getElementById("my-url").value = "";
 	document.getElementById("btn-submit-url").classList.add("buttonload");
-	
 	console.log("::: Form Submitted :::")
 	console.log("Call Aylien : "+url);
 	
@@ -23,18 +28,18 @@ function handleSubmitURL(event) {
 		body: JSON.stringify({ 'url': url })
 	})
 	.then(res => res.json())
-    .then(data => {
-      document.getElementById("polarity").innerHTML = data.polarity;
-      document.getElementById("subjectivity").innerHTML = data.subjectivity;
-      document.getElementById("polarity_confidence").innerHTML =
-        data.polarity_confidence;
-      document.getElementById("subjectivity_confidence").innerHTML =
-        data.subjectivity_confidence;
-      document.getElementById("summary").innerHTML = data.text;
+	.then(data => {
+	  document.getElementById("polarity").innerHTML = data.polarity;
+	  document.getElementById("subjectivity").innerHTML = data.subjectivity;
+	  document.getElementById("polarity_confidence").innerHTML =
+		data.polarity_confidence;
+	  document.getElementById("subjectivity_confidence").innerHTML =
+		data.subjectivity_confidence;
+	  document.getElementById("summary").innerHTML = data.text;
 	  document.getElementById("result").style.display = 'flex';
 	  document.getElementById("btn-submit-url").classList.remove("buttonload");
 	  document.getElementById("result").scrollIntoView({ behavior: 'smooth', block: 'end'});
-    });
+	});
 }
 
 export {handleSubmitURL};
