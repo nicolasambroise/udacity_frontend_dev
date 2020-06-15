@@ -1,0 +1,41 @@
+@import "./_color";
+
+form {
+  margin: 30px 0;
+  border-radius: 3px;
+
+	label{
+		font-size: 18px;
+	}
+	
+	input {
+	  padding: 5px 20px;
+	  width: 100%;
+	  line-height: 16px;
+	  margin: 10px 0 20px 0;
+	}
+  
+	input[type="text"],
+	input[type="url"],
+	input[type="date"]{
+	  width: 100%;
+	  min-width: 165px;
+	  border-radius: 0.5rem;
+	}
+
+	.fa,
+	.svg-inline--fa{
+		display:none;
+	}
+
+	.buttonload {
+	    padding-left: 30px;
+	  
+		.fa,
+		.svg-inline--fa {
+		  margin-left: -12px;
+		  margin-right: 8px;
+		  display: inline-block;
+		}
+	}
+}

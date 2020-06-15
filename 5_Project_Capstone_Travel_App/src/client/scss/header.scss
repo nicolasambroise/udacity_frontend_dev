@@ -1,0 +1,58 @@
+@import "./_color";  
+@import "./_breakpoint";  
+
+header{
+	display:flex;
+	justify-content:space-between;
+	flex-direction:row;
+	
+   .head-text{
+		padding: 20px 10px;
+		text-align: right;
+		
+		h1 {
+			font-size: 28px;
+			font-weight: 300;
+			color: $main-color;
+			margin: 0;
+		}
+	}
+
+	#avatar{
+		display: block;
+		position: relative;
+		margin: 0;
+		
+		img{
+			border-radius: 50%;
+			background-color: $bg-img-color;
+			box-shadow: 1px 1px 3px $shadow-color;
+			width: 80px;
+			margin: 10px;
+		}
+	}
+}
+
+@media (min-width: $bp2) {
+	header{
+		.head-text{
+			padding: 10px;
+
+			h1 {
+				font-size: 42px;
+			}
+		}
+	}
+}
+
+@media (min-width: $bp3) {
+	header{
+		.head-text{
+			padding: 0 10px;
+	
+			h1 {
+				font-size: 50px;
+			}
+		}
+	}
+}

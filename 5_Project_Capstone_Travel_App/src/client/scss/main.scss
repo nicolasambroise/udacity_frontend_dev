@@ -1,0 +1,47 @@
+@import "./_color";
+
+.container-full-size {
+  max-width: 100%;
+  min-height: 400px;
+}
+
+.hero {
+  height: 100%;
+  width: 100%;
+  background: url('../img/voyage.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main{
+	h2 {
+		color: $main-color;
+		margin: 10px;
+		font-weight: bold;
+		font-size: 24px;
+	}
+	
+	h3, h4 {
+		color: $main-color;
+		margin: 10px;
+		font-size: 18px;
+	}
+	
+	&.borderbox{
+		display: block;
+		box-shadow: 0 0 0 1px rgba(0,0,0,.15), 1px 2px 3px rgba(0,0,0,.6);
+		padding: 15px 30px;
+		margin-bottom:10px;
+		background-color: #fff;
+	}
+	
+	small{
+		font-style: italic;
+	}
+
+	
+	#result{
+		display: none;
+	}
+}
