@@ -60,10 +60,12 @@ Simply navigate to http://localhost:9000
 ## Project 4 : Evaluate A News Article with Natural Language Processing 
 Build a web tool that allows users to run Natural Language Processing (NLP) on articles or blogs found on other websites. Using an exciting new API called Aylien, you can build a simple web interface to interact with their NLP system. This tool will give back pertinent information about the article: whether the content is subjective (opinion) or objective (fact-based) and whether it is positive, neutral, or negative in tone.
 
+=> More info on [Project 4 Readme](https://github.com/nicolasambroise/Udacity_FrontEnd_Dev/tree/master/4_Project_News_NLP)
 
 ## Project 5 : Capstone - Travel App
 In the final project, you’ll combine all of the skills you’ve developed throughout the Nanodegree program to build an online travel app. You’ll work with data sources from multiple APIs to create a dynamic travel weather planning application that helps people plan trips by generating weather forecasts for the places they’re visiting. The design is up to you, and you’ll have the flexibility to include and combine other APIs (even your own!) to build this final project.
 
+=> More info on [Project 5 Readme](https://github.com/nicolasambroise/Udacity_FrontEnd_Dev/tree/master/5_Project_Capstone_Travel_App)
 
 ## Style-Guide
 
