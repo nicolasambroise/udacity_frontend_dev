@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="vieport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Travel App - Nicolas AMBROISE">
+	<meta name="author" content="Nicolas AMBROISE">
+	<title>Travel App - Nicolas AMBROISE</title>
+	<base href="/">
+</head>
+<body>
+	 <div class="container">
+		<header class="box">
+			<div id="avatar">
+				<picture>
+					<img alt="nicolas ambroise picture" data-entity-type="" data-entity-uuid="" src="../img/avatar/AmbroiseNicolas2020Square100.png">
+				 </picture>
+			</div>
+			<div class="head-text">
+				<h1 class="text-uppercase">Nicolas AMBROISE</h1>
+				<strong>Senior IT Officer / Frontend Web Developer</strong>
+			</div>
+		</header>
+	</div>
+	<div class="container container-full-size hero">
+		<main class="row">
+			<section class="col-md-10 offset-md-1">
+				<form>
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="text-center">Your next Travel</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-md-4 mt-1">
+							<input type="text" id="city" placeholder="City" aria-label="City" class="form-control">
+						</div>
+						<div class="col-sm-6 col-md-4 mt-1">
+							<input type="date" id="date_start" aria-label="Date" class="form-control">
+						</div>
+						<div class="col-sm-6 col-md-4 mt-1">
+							<input type="date" id="date_end" aria-label="Date" class="form-control">
+						</div>
+						<div class="col-md-12 mt-1 text-center">
+							<button class="btn btn-info" type="submit" id="trip_search">Search</button>
+						</div>
+					</div>
+				</form>
+			</section>
+		</main>
+	</div>
+	<div class="container" id="result">
+		<section>
+			<div class="row">
+				<div class="col-md-12 mt-1">
+					<h2 class="text-center">Your saved trips</h2>
+				</div>
+			</div>
+			<div class="row" id="my-trips">
+			</div>
+		</section>
+	</div>
+	<footer>
+      <p>&copy; Nicolas AMBROISE</p>
+    </footer>
+	
+	<!-- Modal -->
+    <div class="modal fade" id="tripModal" tabindex="-1" role="dialog" aria-labelledby="tripModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title trip_title" id="tripModalTitle">Travel Title</h3>
+					<button class="trip_cancel close" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container-fluid">
+						<div class="media row">
+							<div class="col-sm-12 col-md-5">
+								<img src="../img/voyage.jpg"  alt="Popular Images from Trip Location" id="tripModalImg">
+							</div>
+							<div class="col-sm-12 col-md-7">
+								<p class="mt-0">Trip to: <span class="trip_info"></span></p>
+								<p class="mt-0">Departure: <span class="trip_info"></span></p>
+								<p class="mt-0">Return: <span class="trip_info"></span></p>
+								<p class="mt-0">Duration: <span class="trip_info"></span></p>
+								<p class="mt-0">Start in: <span class="trip_info"></span></p>
+								<p class="mt-0">Temperature: <span class="trip_info"></span></p>
+								<p class="mt-0">Humidity: <span class="trip_info"></span></p>
+								<p class="mt-0">Weather: <span class="trip_info"></span></p>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary trip_cancel">Close</button>
+						<button type="button" class="btn btn-primary trip_save">Save</button>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
