@@ -28,6 +28,12 @@ The following are just some of the questions that you’ll experience along the 
 -Should my function be this many lines of code?
 -Is readability or performance more important?
 
+#### Extend Options Developed
+
+- Add end date and display length of trip.
+- Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities).
+- Allow the user to remove the trip.
+
 ## Installation
 Prerequise : 
 - have node and npm installed. 
