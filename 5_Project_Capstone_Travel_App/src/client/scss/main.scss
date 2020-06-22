@@ -31,12 +31,20 @@ main{
 	small{
 		font-style: italic;
 	}	
-	#result{
+}
+
+#result{
 		display: none;
 		
 		section{
 			margin: 15px 0;
 		}
+		
+		.card.expired{
+			border-color: $main-color;
+			border-width: 3px;
+		}
 	}
-}
+
+
 
