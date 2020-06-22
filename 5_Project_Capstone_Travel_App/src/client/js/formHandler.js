@@ -4,6 +4,7 @@ const tripSearchData = {};
 
 const daysLabel = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const monthsLabel = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const cityRegex = /^[a-zA-Z\s]{0,255}$/;
 
 
 // --------------------------------------------------------
@@ -50,11 +51,22 @@ function handleSearch(event) {
 		webImg: "https://pixabay.com/get/57e8d6454e53a914f1dc846096293477173dd8e05a4c704c7c2d7fd6974dc158_640.jpg"
 	*/
 	
+	// Check City Regex 
+	if(!validInputCity(city)){
+		alert("Check your city Name");
+		return;
+	}
 	
 	// Check Date validity
 	const period = calculTripPeriod(date_start,date_end);
 	if( period <= 0 ){
 		alert("Please check your dates");
+		return;
+	}
+	
+	const countdown = calculTripCountdown(date_start);
+	if( countdown < 0){
+		alert("Please check your start date");
 		return;
 	}
   
@@ -77,8 +89,6 @@ function handleSearch(event) {
 					fetchPixabay(tripSearchData.countryName)
 				])
 				.then(() => {
-					// Now we have all APIs response
-					console.log(tripSearchData); 
 					showModal(tripSearchData);
 				})
 				.catch(function (error) {console.log(error);})
@@ -87,8 +97,6 @@ function handleSearch(event) {
 				// Weatherbit
 				fetchWeatherbit(tripSearchData.latitude,tripSearchData.longitude,tripSearchData.date_start)
 				.then(() => {
-					// Now we have all APIs response
-					console.log(tripSearchData); 
 					showModal(tripSearchData);
 				})
 				.catch(function (error) {console.log(error);})
@@ -97,14 +105,11 @@ function handleSearch(event) {
 				// Pixabay
 				fetchPixabay(tripSearchData.countryName)
 				.then(() => {
-					// Now we have all APIs response
-					console.log(tripSearchData); 
 					showModal(tripSearchData);
 				})
 				.catch(function (error) {console.log(error);})
 			}
 			else{
-				console.log(tripSearchData); 
 				showModal(tripSearchData);
 			}
 		}
@@ -130,11 +135,12 @@ function handleSave(event) {
       })
 	.then(res => res.json())
     .then(data => {
-		console.log(data);
+		//console.log(data);
 		$('#tripModal').modal('hide');
 		document.getElementById("result").style.display = 'block';
         document.getElementById('my-trips').insertAdjacentHTML("afterbegin", buildCard(tripSearchData,data.index));
-	});
+	})
+	.catch(function (error) {console.log(error);})
 }
 
 function handleDisplay(index) {
@@ -150,9 +156,10 @@ function handleDisplay(index) {
       })
 	.then(res => res.json())
     .then(data => {
-		console.log(data);
+		//console.log(data);
 		showModal(data.trip);
-	});
+	})
+	.catch(function (error) {console.log(error);})
 }
 
 function handleCancel(event) {
@@ -190,10 +197,11 @@ function handleDelete(index) {
 		else{
 			document.getElementById("result").style.display = 'none';
 		}
-	  });	
+	  })
+	  .catch(function (error) {console.log(error);})	  
 }
 // --------------------------------------------------------
-/* Fetchs */
+/* Fetchs API */
 // --------------------------------------------------------
 
 	function fetchGeonames(city) {
@@ -205,7 +213,7 @@ function handleDelete(index) {
 			})
 			.then(res => res.json())
 			.then(responses => {
-				console.log(responses);
+				//console.log(responses);
 				if(responses.geonames.length > 0){
 					tripSearchData.latitude = responses.geonames[0].lat;
 					tripSearchData.longitude = responses.geonames[0].lng;
@@ -243,7 +251,7 @@ function handleDelete(index) {
 			})
 			.then(res => res.json())
 			.then(responses => {
-				console.log(responses);
+				//console.log(responses);
 				if(responses.data.length > 0){
 					for (let i = 0; i < responses.data.length; i++) {
 						//console.log(start+" == "+responses.data[i].valid_date);
@@ -256,7 +264,7 @@ function handleDelete(index) {
 					}
 				}
 				else{
-					console.log("Weather forcast not found");
+					alert("Weather forcast not found");
 				}
 			})
 			.catch(function (error) {console.log(error);})
@@ -275,8 +283,10 @@ const initDateField = () => {
 	if(dd<10){dd='0'+dd;} 
 	if(mm<10){mm='0'+mm;} 
 	const dateMin = yyyy+'-'+mm+'-'+dd;
-	document.getElementById("date_start").setAttribute("min", dateMin);	
-	document.getElementById("date_end").setAttribute("min", dateMin);	
+	if(document.getElementById("date_start") && document.getElementById("date_end")){
+		document.getElementById("date_start").setAttribute("min", dateMin);	
+		document.getElementById("date_end").setAttribute("min", dateMin);
+	}	
 	// From https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today
 }
 
@@ -306,7 +316,7 @@ const formatLongTripDate = (date) => {
   // From https://stackoverflow.com/questions/9677757/how-to-get-the-day-of-the-week-from-the-day-number-in-javascript
 }
 
-const formatShortTripDate = (date,format) => {
+const formatShortTripDate = (date) => {
   // 04/06
   const tripDate = new Date(date);
   const tripDateformatted = `${("0" + tripDate.getDate()).slice(-2)}/${("0" + (tripDate.getMonth() + 1)).slice(-2)}`;
@@ -315,11 +325,16 @@ const formatShortTripDate = (date,format) => {
 }
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.toLowerCase().slice(1);
   // From https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
 }
 
+function validInputCity(string) {
+	return cityRegex.test(string);
+}
+
 const showModal = (displayedTrip) => {
+  console.log(displayedTrip);
   $('#tripModal').modal({keyboard: false});
   // Documentation : https://getbootstrap.com/docs/4.0/components/modal/
 
@@ -359,7 +374,9 @@ const showModal = (displayedTrip) => {
 }
 
 const displayAllCards = () => {
-  document.getElementById("my-trips").innerHTML = "";
+    if(document.getElementById("my-trips")){
+		document.getElementById("my-trips").innerHTML = "";
+	}
   
   fetch('http://localhost:9000/all')
 	.then(res => res.json())
@@ -382,8 +399,13 @@ const displayAllCards = () => {
 }
 
 const buildCard = (trip,index) => {
+	let expired=""; // Put a red border on expired cards
+	if(calculTripCountdown(trip.date_start) < 0){
+		expired="expired";	
+	}
+	
 	let htmlCard =`<div class="col-sm-12 col-md-4 col-lg-3" id="card${index}">
-	    <div class="card">
+	    <div class="card ${expired}">
 		  <img class="card-img-top" src="${trip.previewImg}" alt="Image of ${capitalizeFirstLetter(trip.city)}, ${trip.countryName}">
 		  <div class="card-body">
 			<h5 class="card-title">${capitalizeFirstLetter(trip.city)}, ${trip.countryCode}</h5>
@@ -407,15 +429,25 @@ const buildCard = (trip,index) => {
 /* Init */
 // --------------------------------------------------------
 
-initDateField(); // Set minDate = today
+
 
 /* Add event listeners */
-document.getElementById('trip_search').addEventListener('click', handleSearch);
-document.querySelector('.trip_save').addEventListener('click', handleSave);
-document.querySelectorAll('.trip_cancel').forEach(element => {
-  element.addEventListener('click', handleCancel);
-});
+if(document.getElementById("trip_search")){
+	
+	initDateField(); // Set minDate = today
+	
+	document.getElementById('trip_search').addEventListener('click', handleSearch);
+	document.querySelector('.trip_save').addEventListener('click', handleSave);
 
-// Add existing saved Cards
-displayAllCards();
-export {handleSearch, handleSave, handleDisplay, handleCancel, handleDelete};
+	document.querySelectorAll('.trip_cancel').forEach(element => {
+	  element.addEventListener('click', handleCancel);
+	});
+
+	// Add existing saved Cards
+	displayAllCards();
+}
+
+export {handleSearch, handleSave, handleDisplay, handleCancel, handleDelete,
+fetchGeonames, fetchPixabay, fetchWeatherbit, initDateField, calculTripPeriod, calculTripCountdown,
+formatLongTripDate, formatShortTripDate, validInputCity, capitalizeFirstLetter, showModal,
+displayAllCards, buildCard}
